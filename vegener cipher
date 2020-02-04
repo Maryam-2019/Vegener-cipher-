@@ -1,0 +1,56 @@
+ private void button1_Click(object sender, EventArgs e)
+        {
+            int i = 0, j = 0;
+
+            string str = textBox1.Text;
+            string key = textBox2.Text;
+            str = str.ToUpper();//ABCD....
+            key = key.ToUpper();//ABCD....
+            char[] cipher = new char[100];
+            char[] charstr = str.ToCharArray();
+            char[] charkey = key.ToCharArray();
+
+
+
+            //Assigning key to the string
+            for (i = 0; i < charstr.Length; i++)
+            {
+                if (j == charkey.Length)
+                    j = 0;
+
+                cipher[i] = Convert.ToChar((charstr[i] - 65) + (charkey[j] - 65) % 26 + 65);
+                j++;
+                textBox3.Text += Convert.ToString(cipher[i]); //print
+            }
+
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int j = 0;
+            string cipher = textBox3.Text;
+            string key = textBox2.Text;
+
+
+            key = key.ToUpper();//ABCD....
+            char[] ccipher = new char[100];
+            char[] charcipher = cipher.ToCharArray();
+            char[] charkey = key.ToCharArray();
+
+            for (int i=0; i < charcipher.Length; i++)
+            {
+                if (j == charkey.Length)
+                    j = 0;
+                ccipher[i] = Convert.ToChar((charcipher[i] - 65) - (charkey[j] - 65) % 26 + 65);
+               
+             
+                j++;
+                textBox4.Text += Convert.ToString(ccipher[i]); //print
+            }
+
+
+        }
+
+    }
